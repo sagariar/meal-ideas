@@ -1,0 +1,18 @@
+{% for item in include.items %}     
+	<tr><td align="left" valign="top">			
+	{% if item.url != nil %}				
+		<a href="" title="{{ item.descr }}">{{ item.title }}</a>	      							      	    
+	{% else %}
+	    {% if item.subitems %}
+			<details open style="padding: 0px 5px 0px 16px;"><summary style="cursor: pointer; padding:2px 0px 2px 0px; font-size:12px; font-weight: bold;">{{ item.title }}</summary>
+			<ul style="margin: 3px 5px 3px 10px;">
+	    	{% if item.subitems %}	    	   
+			   {% include edit_nav.html items=item.subitems %}
+			{% endif %}
+			</ul></details>			
+		{% else %}
+		    <li style="font-size:12px; padding: 2px 0px 0px 0px;"><summary style="padding:2px 0px 2px 0px; font-size:12px; font-weight: bold;">{{ item.title }}</summary></li>
+		{% endif %}
+	{% endif %}
+	</tr>	
+{% endfor %}

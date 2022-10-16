@@ -1,0 +1,25 @@
+{% capture idx %}{{ include.index }}_{% endcapture %}
+{% for item in include.items %}      				
+	{% if item.url != nil %}		
+	    <li style="font-size:16px; padding: 2px 0px 0px 0px;" id="__lnk__{{ include.index }}_{{ forloop.index }}" class="{% if page.url contains item.url %}active{% endif %}">
+	      {% if item.target == 'embed' %}
+	      	<a href="javascript:showDocumentEmbeded('{% unless item.url contains '://' %}{{ site.baseurl }}{% endunless %}{{ item.url }}', '__lnk__{{ include.index }}_{{ forloop.index }}');" target="_self" title="{{ item.descr }}">{{ item.title }}</a>
+	      {% else %}
+	      	<a href="{% unless item.url contains '://' %}{{ site.baseurl }}{% endunless %}{{ item.url }}" target="{{ item.target }}" title="{{ item.descr }}">{{ item.title }}</a>
+	      {% endif %}							      
+	    </li>
+	{% else %}
+	    {% if item.subitems %}
+			</ul>
+			<details style="padding: 0px 5px 0px 16px;"><summary style="cursor: pointer; padding:2px 0px 2px 0px; font-size:12px; font-weight: bold;">{{ item.title }}</summary>
+			<ul style="margin: 3px 5px 3px 10px;">
+	    	{% if item.subitems %}	    	   
+			   {% include nav.html items=item.subitems index=idx %}
+			{% endif %}
+			</ul></details>
+			<ul style="margin: 3px 5px 3px 10px;">			
+		{% else %}
+		    <li style="font-size:14px; padding: 2px 0px 0px 0px;"><summary style="padding:2px 0px 2px 0px; font-size:12px; font-weight: bold;">{{ item.title }}</summary></li>
+		{% endif %}
+	{% endif %}	
+{% endfor %}

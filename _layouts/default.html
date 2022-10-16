@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/stylesheets/print.css" media="print">
+    <title>{{ site.title }}</title>
+    
+    <script language="javascript">    	
+        window.addEventListener('load', function () {
+    		var lst = document.getElementsByTagName("details");	
+			var found = false;		
+    		for (var i = 0; i < lst.length; i++) {        			
+			  	var nodes = lst[i].getElementsByTagName('li');		
+				for (var j = 0; j < nodes.length; j++) { 
+					if(nodes[j].className == "active") {						
+						lst[i].open=true;						
+					}
+				}					    		     		  
+    		}
+    	})
+    
+    	function showDocumentEmbeded(url, element) {    
+        	document.getElementById('mainContent').style.display="none";
+        	
+        	document.getElementById('embededDocumentContainer').style.background = "url('{{ site.baseurl }}/images/loading.gif') top center no-repeat";
+        	document.getElementById('embededDocumentContainer').style.display="block";
+    		
+        	document.getElementById('framedDocument').src = url;
+        	
+        	var lst = document.getElementsByTagName("LI");
+    		for (var i = 0; i < lst.length; i++) {
+    		  if(lst[i].className.trim().indexOf("active") == 0 ) {
+    			  lst[i].className = "";
+    		  }
+    		}
+    		document.getElementById(element).className = "active";
+    		window.history.pushState('edgelm', '{{ site.title }}', url);    		
+    	}
+    	
+    	function embededDocumentLoaded() {
+    		document.getElementById('embededDocumentContainer').style.background = ""; 
+    		document.getElementById('embededDocumentContainer').style.display="block";
+    	}
+    </script>
+    
+  </head>
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Meal&nbsp;Ideas	</h1>
+        <h2>&nbsp;&nbsp;All you need in one place</h2>
+      </div>
+    </header>
+    
+    <div id="content-wrapper">
+      <div class="clearfix">
+        <table border="0"><tr style="padding:0px 0px 0px 0px;">
+        	{% for topic in site.data.topics.items %}
+        		{% if page.dir contains topic.path %}
+		        	<td style="padding:0px 20px 10px 10px;border-bottom: 4px solid #69c;" width="1%" align="left">
+		        	<h4 class="menu_topic"><a style="cursor: default; font-weight: bold; href="{{ site.baseurl }}{{ topic.path }}index" target="_self" title="{{ topic.descr }}">{{ topic.title }}</a></h4>
+		        {% else %}
+	        	    <td style="background-color: #69c; padding:0px 20px 10px 10px; border-bottom: 4px solid #69c;" width="1%" align="left">
+	        	    <h4 class="menu_topic"><a href="{{ site.baseurl }}{{ topic.path }}index" target="_self" title="{{ topic.descr }}"><font color="white">{{ topic.title }}</font></a></h4>
+	        	{% endif %}
+		        </td>
+        	{% endfor %}
+        	<td style="padding:0px 0px 0px 0px; border-bottom: 4px solid #69c;" width="99%" />
+        </tr>
+        </table>
+      	<table border="0"><tr>
+      		{% for topic in site.data.topics.items %}
+      			{% if page.dir contains topic.path %}
+      				<td width="300px" valign="top" aligh="left" style="border-right:4px solid #69c">
+		      			<h4 class="menu_topic">{{ topic.descr }}</h4>
+		      			<ul style="margin: 3px 5px 3px 10px;">
+		      				{% include nav.html items=topic.subitems index="0" %}
+						</ul>
+					</td>
+					<!-- style="border-right:4px solid blue"<td width="10px" valign="top"><aside id="sidebar"></aside></td> -->
+				{% endif %}
+			{% endfor %}
+	        <td valign="top">
+		        <section id="main-content">
+		        	<div id="mainContent">{{ content }}</div> 
+					<div id="embededDocumentContainer" style="background:url('{{ site.baseurl }}/images/loading.gif') top center no-repeat; display:{% if page.source != nil %}block{% else %}none{% endif %};">
+					  <iframe id="framedDocument" onload="javascript:embededDocumentLoaded();" style="border:none;" height="1150px" width="100%" src="{% if page.source != nil %}{% unless page.source contains '://' %}{{ site.baseurl }}{% endunless %}{{ page.source }}{% endif %}"></iframe>
+					</div>
+		        </section>
+	        </td>
+	  	</tr></table>
+      </div>
+    </div>
+  </body>
+</html>

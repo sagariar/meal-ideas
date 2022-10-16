@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/pages/ift/ift-documentation/stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/pages/ift/ift-documentation/stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/pages/ift/ift-documentation/stylesheets/print.css" media="print">
+    <title>Installation Frameworks Team</title>
+    
+    <script language="javascript">    	
+        window.addEventListener('load', function () {
+    		var lst = document.getElementsByTagName("details");	
+			var found = false;		
+    		for (var i = 0; i < lst.length; i++) {        			
+			  	var nodes = lst[i].getElementsByTagName('li');		
+				for (var j = 0; j < nodes.length; j++) { 
+					if(nodes[j].className == "active") {						
+						lst[i].open=true;						
+					}
+				}					    		     		  
+    		}
+    	})
+    
+    	function showDocumentEmbeded(url, element) {    
+        	document.getElementById('mainContent').style.display="none";
+        	
+        	document.getElementById('embededDocumentContainer').style.background = "url('/pages/ift/ift-documentation/images/loading.gif') top center no-repeat";
+        	document.getElementById('embededDocumentContainer').style.display="block";
+    		
+        	document.getElementById('framedDocument').src = url;
+        	
+        	var lst = document.getElementsByTagName("LI");
+    		for (var i = 0; i < lst.length; i++) {
+    		  if(lst[i].className.trim().indexOf("active") == 0 ) {
+    			  lst[i].className = "";
+    		  }
+    		}
+    		document.getElementById(element).className = "active";
+    		window.history.pushState('edgelm', 'Installation Frameworks Team', url);    		
+    	}
+    	
+    	function embededDocumentLoaded() {
+    		document.getElementById('embededDocumentContainer').style.background = ""; 
+    		document.getElementById('embededDocumentContainer').style.display="block";
+    	}
+    </script>
+    
+  </head>
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Installation&nbsp;Frameworks&nbsp;Team</h1>
+        <h2>&nbsp;&nbsp;All you need in one place</h2>
+      </div>
+    </header>
+    
+    <div id="content-wrapper">
+      <div class="clearfix">
+        <table border="0"><tr style="padding:0px 0px 0px 0px;">
+        	
+        		
+	        	    <td style="background-color: #69c; padding:0px 20px 10px 10px; border-bottom: 4px solid #69c;" width="1%" align="left">
+	        	    <h4 class="menu_topic"><a href="/pages/ift/ift-documentation/pages/ift/index" target="_self" title="High protein veg ideas"><font color="white">Vegeterian high-protein</font></a></h4>
+	        	
+		        </td>
+        	
+        	<td style="padding:0px 0px 0px 0px; border-bottom: 4px solid #69c;" width="99%" />
+        </tr>
+        </table>
+      	<table border="0"><tr>
+      		
+      			
+			
+	        <td valign="top">
+		        <section id="main-content">
+		        	<div id="mainContent"></div> 
+					<div id="embededDocumentContainer" style="background:url('/pages/ift/ift-documentation/images/loading.gif') top center no-repeat; display:none;">
+					  <iframe id="framedDocument" onload="javascript:embededDocumentLoaded();" style="border:none;" height="1150px" width="100%" src=""></iframe>
+					</div>
+		        </section>
+	        </td>
+	  	</tr></table>
+      </div>
+    </div>
+  </body>
+</html>
