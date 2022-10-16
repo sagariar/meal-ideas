@@ -18,13 +18,13 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Installation Frameworks Team
+title: Meal Ideas
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Welcome to IFT team
-baseurl: "/pages/ift/ift-documentation" # the subpath of your site, e.g. /blogn  https://github.wdf.sap.corp/pages/ift/ift-documentation/.
-url: "https://github.wdf.sap.corp" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  iftUser
+  Chexk out meal options 
+baseurl: "/meal-ideas/" # the subpath of your site, e.g. /blogn  https://github.wdf.sap.corp/pages/ift/ift-documentation/.
+url: "https://sagariar.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+github_username:  sagariar
 
 # Build settings
 theme: minima

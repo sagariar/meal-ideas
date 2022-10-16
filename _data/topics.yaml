@@ -4,35 +4,9 @@ items:
     path: /pages/ift/
     subitems:
       - title: Feta Cheese and grilled veggies
-        url: /pages/ift/team
+        url: /pages/veg/feta-cheeseç
         target: _self
       - title: Mong Dal Chilla
         descr: Moong dal chilla
         url: /pages/ift/team
-
-        
-      - title: Security Scans
-        descr: Security reports for Sofia Team
-        subitems:
-          - title: Whitesource
-            url: /pages/ift/whitesource
-            target: _self
-            descr: Whitesource
-          - title: Protecode
-            url: /pages/ift/protecode
-            target: _self
-            descr: Protecode
-          - title: Checkmarx
-            url: /pages/ift/checkmarx
-            target: _self
-            descr: Protecode
-          - title: Iungo reports
-            url: /pages/ift/protecode
-            target: _self
-            descr: Protecode
-      - title: Hyperscaler
-        descr: Cloud services
-        subitems:
-          - title: Alibaba
-            url: /pages/ift/hyperscaler/alibaba
-            target: _self
+      
